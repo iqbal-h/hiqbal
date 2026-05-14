@@ -47,6 +47,7 @@
       -webkit-font-smoothing: antialiased;
       overflow-x: hidden;
     }
+    body.modal-open { overflow: hidden; }
 
     /* Atmospheric wash */
     body::before {
@@ -119,6 +120,7 @@
       padding: 4px 0;
       color: var(--ink-soft);
       transition: color 0.2s;
+      cursor: pointer;
     }
     .nav-links a::after {
       content: "";
@@ -266,6 +268,7 @@
       gap: 8px;
       color: var(--ink-soft);
       transition: color 0.2s, transform 0.2s;
+      cursor: pointer;
     }
     .hero-links a:hover { color: var(--accent); transform: translateY(-1px); }
     .hero-links a::before {
@@ -902,7 +905,7 @@
       color: rgba(241, 243, 236, 0.7);
     }
     .foot-grid ul { list-style: none; }
-    .foot-grid a { transition: color 0.2s; display: block; padding: 2px 0; }
+    .foot-grid a { transition: color 0.2s; display: block; padding: 2px 0; cursor: pointer; }
     .foot-grid a:hover { color: var(--accent); }
 
     .foot-bottom {
@@ -924,6 +927,197 @@
       .foot-bottom { flex-direction: column; gap: 10px; align-items: flex-start; }
     }
 
+    /* ========== RESUME MODAL ========== */
+    .modal {
+      position: fixed;
+      inset: 0;
+      z-index: 1000;
+      display: none;
+      align-items: center;
+      justify-content: center;
+      padding: 32px 20px;
+    }
+    .modal.is-open { display: flex; }
+    .modal-backdrop {
+      position: absolute;
+      inset: 0;
+      background: rgba(22, 24, 26, 0.62);
+      backdrop-filter: blur(10px);
+      -webkit-backdrop-filter: blur(10px);
+      animation: modalFade 0.25s ease;
+    }
+    .modal-panel {
+      position: relative;
+      width: 100%;
+      max-width: 1000px;
+      height: 100%;
+      max-height: calc(100vh - 64px);
+      background: var(--bg-soft);
+      border: 1px solid var(--rule);
+      display: flex;
+      flex-direction: column;
+      overflow: hidden;
+      box-shadow: 0 40px 100px -30px rgba(22, 24, 26, 0.55);
+      animation: modalRise 0.4s cubic-bezier(.2,.7,.2,1);
+    }
+    @keyframes modalFade { from { opacity: 0; } to { opacity: 1; } }
+    @keyframes modalRise {
+      from { opacity: 0; transform: translateY(20px) scale(0.985); }
+      to   { opacity: 1; transform: translateY(0) scale(1); }
+    }
+
+    .modal-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 16px 22px;
+      border-bottom: 1px solid var(--rule);
+      background: var(--surface);
+      gap: 16px;
+      flex-shrink: 0;
+    }
+    .modal-titleblock { min-width: 0; }
+    .modal-eyebrow {
+      font-family: var(--mono);
+      font-size: 9.5px;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      color: var(--accent);
+      font-weight: 500;
+      margin-bottom: 3px;
+    }
+    .modal-header h3 {
+      font-family: var(--serif);
+      font-size: 22px;
+      line-height: 1.1;
+      letter-spacing: -0.02em;
+      font-weight: 500;
+      font-variation-settings: "SOFT" 30, "opsz" 36;
+      color: var(--ink);
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+    .modal-header h3 em {
+      font-style: italic;
+      color: var(--accent);
+      font-variation-settings: "SOFT" 100, "opsz" 36, "wght" 400;
+    }
+
+    .modal-actions {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      flex-shrink: 0;
+    }
+    .btn-download {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      font-family: var(--mono);
+      font-size: 10.5px;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      padding: 9px 14px;
+      background: var(--accent);
+      color: var(--bg-soft);
+      border: 1px solid var(--accent);
+      font-weight: 500;
+      cursor: pointer;
+      transition: background 0.2s, border-color 0.2s, transform 0.15s;
+    }
+    .btn-download::before {
+      content: "↓";
+      font-family: var(--serif);
+      font-size: 14px;
+      line-height: 1;
+    }
+    .btn-download:hover {
+      background: var(--accent-deep);
+      border-color: var(--accent-deep);
+      transform: translateY(-1px);
+    }
+    .btn-close {
+      background: transparent;
+      border: 1px solid var(--rule);
+      color: var(--ink-soft);
+      width: 36px;
+      height: 36px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 14px;
+      font-family: var(--mono);
+      cursor: pointer;
+      transition: all 0.2s;
+      padding: 0;
+    }
+    .btn-close:hover {
+      border-color: var(--ink);
+      color: var(--ink);
+      background: var(--surface-2);
+    }
+
+    .modal-body {
+      flex: 1;
+      background: #525659; /* PDF viewer grey, looks native */
+      position: relative;
+      overflow: hidden;
+      min-height: 0;
+    }
+    .modal-body object,
+    .modal-body iframe {
+      width: 100%;
+      height: 100%;
+      border: 0;
+      display: block;
+    }
+    .modal-fallback {
+      position: absolute;
+      inset: 0;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      padding: 36px;
+      background: var(--bg-soft);
+      color: var(--ink-soft);
+      gap: 16px;
+    }
+    .modal-fallback .ico {
+      font-family: var(--serif);
+      font-size: 72px;
+      line-height: 1;
+      color: var(--accent);
+      font-style: italic;
+      font-variation-settings: "SOFT" 100, "opsz" 96;
+    }
+    .modal-fallback p {
+      font-family: var(--read);
+      font-size: 16px;
+      max-width: 380px;
+    }
+    .modal-fallback a {
+      color: var(--accent);
+      border-bottom: 1px dotted var(--accent);
+      padding-bottom: 1px;
+      font-family: var(--mono);
+      font-size: 12px;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+    }
+
+    @media (max-width: 640px) {
+      .modal { padding: 0; }
+      .modal-panel { max-height: 100vh; border: 0; }
+      .modal-header { padding: 12px 14px; gap: 10px; }
+      .modal-header h3 { font-size: 17px; }
+      .modal-eyebrow { font-size: 9px; }
+      .btn-download { padding: 7px 10px; font-size: 9.5px; letter-spacing: 0.1em; }
+      .btn-close { width: 32px; height: 32px; }
+    }
+
     /* ========== ANIMATIONS ========== */
     @keyframes rise {
       from { opacity: 0; transform: translateY(20px); }
@@ -939,7 +1133,13 @@
     .iv.in { opacity: 1; transform: translateY(0); }
 
     @media (prefers-reduced-motion: reduce) {
-      .reveal, .iv { animation: none !important; opacity: 1 !important; transform: none !important; transition: none !important; }
+      .reveal, .iv,
+      .modal-backdrop, .modal-panel {
+        animation: none !important;
+        opacity: 1 !important;
+        transform: none !important;
+        transition: none !important;
+      }
       html { scroll-behavior: auto; }
     }
   </style>
@@ -957,7 +1157,7 @@
         <li><a href="#publications">Papers</a></li>
         <li><a href="#news">News</a></li>
         <li><a href="#teaching">Teaching</a></li>
-        <li><a href="https://github.com/iqbal-h/hiqbal/blob/main/pdfs/HassanIqbal_Resume.pdf" target="_blank" rel="noopener">Resume ↗</a></li>
+        <li><a href="pdfs/HassanIqbal_Resume.pdf" class="js-resume" data-resume>Resume</a></li>
       </ul>
     </div>
   </nav>
@@ -988,7 +1188,7 @@
           <a href="https://scholar.google.com/citations?hl=en&user=Y1QaCacAAAAJ" target="_blank" rel="noopener">Google Scholar</a>
           <a href="https://www.linkedin.com/in/hiqbal1/" target="_blank" rel="noopener">LinkedIn</a>
           <a href="https://twitter.com/iqbhas" target="_blank" rel="noopener">Twitter / X</a>
-          <a href="https://github.com/iqbal-h/hiqbal/blob/main/pdfs/HassanIqbal_Resume.pdf" target="_blank" rel="noopener">Resume PDF</a>
+          <a href="pdfs/HassanIqbal_Resume.pdf" class="js-resume" data-resume>Resume PDF</a>
         </div>
       </div>
     </div>
@@ -1307,7 +1507,7 @@
         <div class="iv">
           <h4>Documents</h4>
           <ul>
-            <li><a href="https://github.com/iqbal-h/hiqbal/blob/main/pdfs/HassanIqbal_Resume.pdf" target="_blank" rel="noopener">Resume PDF →</a></li>
+            <li><a href="pdfs/HassanIqbal_Resume.pdf" class="js-resume" data-resume>Resume PDF →</a></li>
             <li><a href="https://medium.com/@hassaniqbal931/how-to-apply-for-a-ph-d-in-the-usa-f75134c97085" target="_blank" rel="noopener">Blog →</a></li>
           </ul>
         </div>
@@ -1329,7 +1529,34 @@
     </div>
   </footer>
 
+  <!-- =================== RESUME MODAL =================== -->
+  <div class="modal" id="resumeModal" aria-hidden="true" role="dialog" aria-modal="true" aria-labelledby="resumeModalTitle">
+    <div class="modal-backdrop" data-close></div>
+    <div class="modal-panel">
+      <header class="modal-header">
+        <div class="modal-titleblock">
+          <div class="modal-eyebrow">Document · PDF</div>
+          <h3 id="resumeModalTitle">Hassan Iqbal — <em>Résumé</em></h3>
+        </div>
+        <div class="modal-actions">
+          <a class="btn-download" href="pdfs/HassanIqbal_Resume.pdf" download="HassanIqbal_Resume.pdf">Download</a>
+          <button class="btn-close" type="button" data-close aria-label="Close">✕</button>
+        </div>
+      </header>
+      <div class="modal-body">
+        <object id="resumeObject" data="" type="application/pdf">
+          <div class="modal-fallback">
+            <div class="ico">!</div>
+            <p>Your browser can't display PDFs inline. You can download the file instead.</p>
+            <a href="pdfs/HassanIqbal_Resume.pdf" download="HassanIqbal_Resume.pdf">Download Résumé</a>
+          </div>
+        </object>
+      </div>
+    </div>
+  </div>
+
   <script>
+    /* ===== Section reveals on scroll ===== */
     const io = new IntersectionObserver((entries) => {
       entries.forEach(e => {
         if (e.isIntersecting) {
@@ -1339,6 +1566,45 @@
       });
     }, { threshold: 0.1, rootMargin: "0px 0px -40px 0px" });
     document.querySelectorAll('.iv').forEach(el => io.observe(el));
+
+    /* ===== Resume modal ===== */
+    (function () {
+      const modal      = document.getElementById('resumeModal');
+      const pdfObject  = document.getElementById('resumeObject');
+      const RESUME_URL = 'pdfs/HassanIqbal_Resume.pdf';
+
+      function openResume(e) {
+        if (e) e.preventDefault();
+        // Set the PDF source only when opening, so it doesn't load on page-load
+        if (!pdfObject.getAttribute('data')) {
+          pdfObject.setAttribute('data', RESUME_URL + '#view=FitH&toolbar=1');
+        }
+        modal.classList.add('is-open');
+        modal.setAttribute('aria-hidden', 'false');
+        document.body.classList.add('modal-open');
+      }
+
+      function closeResume() {
+        modal.classList.remove('is-open');
+        modal.setAttribute('aria-hidden', 'true');
+        document.body.classList.remove('modal-open');
+      }
+
+      // Bind all resume triggers across the page
+      document.querySelectorAll('.js-resume, [data-resume]').forEach(el => {
+        el.addEventListener('click', openResume);
+      });
+
+      // Close interactions
+      modal.querySelectorAll('[data-close]').forEach(el => {
+        el.addEventListener('click', closeResume);
+      });
+      document.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape' && modal.classList.contains('is-open')) {
+          closeResume();
+        }
+      });
+    })();
   </script>
 </body>
 </html>
