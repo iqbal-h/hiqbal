@@ -1,247 +1,1344 @@
 <!DOCTYPE html>
-<!--
-    Plain-Academic by Vasilios Mavroudis
-    Released under the  Simplified BSD License/FreeBSD (2-clause) License.
-    https://github.com/mavroudisv/plain-academic
-  -->
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Hassan Iqbal — Researcher · Engineer</title>
+  <meta name="description" content="Hassan Iqbal — PhD in Computer Science (NC State). Software Engineer at HPE. Research on networked systems, cloud performance, and applied machine learning.">
 
-  <html lang="en">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght,SOFT@0,9..144,300..900,0..100;1,9..144,300..900,0..100&family=Newsreader:ital,opsz,wght@0,6..72,300..700;1,6..72,300..700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
 
-  <!-- Mirrored from andreacerulli.github.io/ by HTTrack Website Copier/3.x [XR&CO'2014], Fri, 04 Oct 2019 01:13:52 GMT -->
-  <!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=utf-8" /><!-- /Added by HTTrack -->
-  <head>
-    <title>Hassan Iqbal</title>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <!-- <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">-->
-    <link href="css/bootstrap.min.css" rel="stylesheet">
-    <script src="../ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
-    <script src="../maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
-    <!-- <script src="js/bootstrap.min.js"></script>-->
-    <link href='https://fonts.googleapis.com/css?family=Oswald:700|Libre+Franklin:800' rel='stylesheet' type='text/css'>
-  </head>
-  <body>
+  <style>
+    /* ========== TOKENS ========== */
+    :root {
+      --bg:          #e9ebe4;        /* pale sage-stone, modern not beige */
+      --bg-soft:     #f1f3ec;
+      --surface:     #f6f7f1;
+      --surface-2:   #fbfbf6;
+      --ink:         #16181a;
+      --ink-soft:    #4d5256;
+      --ink-faded:   #8e918c;
+      --rule:        #cdd0c5;
+      --rule-soft:   #dde0d6;
+      --accent:      #d63d1c;        /* grounded coral, authority on light */
+      --accent-deep: #a92c10;
+      --accent-tint: #f8e4dc;
+      --gold:        #b58a3c;
 
+      --serif: "Fraunces", "Times New Roman", serif;
+      --read:  "Newsreader", "Georgia", serif;
+      --mono:  "JetBrains Mono", ui-monospace, monospace;
 
-    <!-- Navigation -->
-    <nav class="navbar navbar-inverse" style="margin-left:-3vh" >
-      <div class="container">
-        <ul class="nav navbar-nav">
-          <li><a href="index.html">Home</a></li>
-          <li><a href="#contacts">Contacts</a></li>
-          <li><a href="#publications">Publications</a></li> 
-          <li><a href="#teaching">Teaching</a></li>
-          <li><a href="https://github.com/iqbal-h/hiqbal/blob/main/pdfs/HassanIqbal_Resume.pdf" target="_blank">Resume</a></li>
-          <li><a href="#blog">Blog</a></li>
-          <!-- <li><a href="/pdfs/ProjMarr_slides.pdf" class="image fit"><img src="images/marr_pic.jpg" alt=""></a></li> -->
+      --max: 1200px;
+    }
+
+    /* ========== RESET ========== */
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body {
+      font-family: var(--read);
+      font-size: 17px;
+      line-height: 1.6;
+      color: var(--ink);
+      background: var(--bg);
+      font-feature-settings: "kern", "liga", "onum";
+      -webkit-font-smoothing: antialiased;
+      overflow-x: hidden;
+    }
+
+    /* Atmospheric wash */
+    body::before {
+      content: "";
+      position: fixed;
+      inset: 0;
+      pointer-events: none;
+      z-index: 1;
+      background:
+        radial-gradient(900px 500px at 85% -10%, rgba(214, 61, 28, 0.06), transparent 60%),
+        radial-gradient(800px 500px at -10% 110%, rgba(60, 100, 140, 0.05), transparent 60%);
+    }
+
+    a { color: inherit; text-decoration: none; }
+    img { max-width: 100%; display: block; }
+
+    ::selection { background: var(--accent); color: var(--bg-soft); }
+
+    /* ========== LAYOUT ========== */
+    .wrap {
+      max-width: var(--max);
+      margin: 0 auto;
+      padding: 0 40px;
+      position: relative;
+      z-index: 2;
+    }
+
+    /* ========== NAV ========== */
+    .nav {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      background: color-mix(in srgb, var(--bg) 82%, transparent);
+      backdrop-filter: blur(14px) saturate(140%);
+      -webkit-backdrop-filter: blur(14px) saturate(140%);
+      border-bottom: 1px solid var(--rule);
+    }
+    .nav-inner {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 14px 40px;
+      max-width: var(--max);
+      margin: 0 auto;
+    }
+    .nav-mark {
+      font-family: var(--serif);
+      font-weight: 600;
+      font-size: 19px;
+      letter-spacing: -0.01em;
+      font-variation-settings: "SOFT" 50, "opsz" 20;
+      color: var(--ink);
+    }
+    .nav-mark em {
+      font-style: italic;
+      color: var(--accent);
+      font-variation-settings: "SOFT" 100, "opsz" 20;
+    }
+    .nav-links {
+      display: flex;
+      gap: 24px;
+      list-style: none;
+      font-family: var(--mono);
+      font-size: 11.5px;
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+    }
+    .nav-links a {
+      position: relative;
+      padding: 4px 0;
+      color: var(--ink-soft);
+      transition: color 0.2s;
+    }
+    .nav-links a::after {
+      content: "";
+      position: absolute;
+      left: 0; right: 0; bottom: -2px;
+      height: 1px;
+      background: var(--accent);
+      transform: scaleX(0);
+      transform-origin: left;
+      transition: transform 0.3s ease;
+    }
+    .nav-links a:hover { color: var(--ink); }
+    .nav-links a:hover::after { transform: scaleX(1); }
+
+    @media (max-width: 720px) {
+      .nav-links { gap: 12px; font-size: 10px; letter-spacing: 0.08em; flex-wrap: wrap; justify-content: flex-end; }
+      .nav-inner { padding: 12px 20px; }
+      .nav-mark { font-size: 16px; }
+    }
+
+    /* ========== HERO ========== */
+    .hero {
+      padding: 60px 0 50px;
+      border-bottom: 1px solid var(--rule);
+      position: relative;
+    }
+    .hero-grid {
+      display: grid;
+      grid-template-columns: 1fr 220px;
+      gap: 60px;
+      align-items: start;
+    }
+    .hero-meta {
+      font-family: var(--mono);
+      font-size: 11px;
+      text-transform: uppercase;
+      letter-spacing: 0.18em;
+      color: var(--ink-faded);
+      margin-bottom: 28px;
+      display: flex;
+      align-items: center;
+      gap: 14px;
+    }
+    .hero-meta::before {
+      content: "";
+      width: 36px;
+      height: 1px;
+      background: var(--accent);
+    }
+    .hero-name {
+      font-family: var(--serif);
+      font-size: clamp(54px, 9vw, 124px);
+      line-height: 0.94;
+      letter-spacing: -0.045em;
+      font-weight: 400;
+      font-variation-settings: "SOFT" 30, "opsz" 144;
+      margin-bottom: 24px;
+      color: var(--ink);
+    }
+    .hero-name .last {
+      display: block;
+      font-style: italic;
+      font-variation-settings: "SOFT" 100, "opsz" 144, "wght" 350;
+      color: var(--accent);
+      padding-left: 0.18em;
+    }
+    .hero-tag {
+      font-family: var(--read);
+      font-size: clamp(18px, 1.7vw, 21px);
+      line-height: 1.5;
+      max-width: 560px;
+      color: var(--ink-soft);
+      font-style: italic;
+      font-weight: 300;
+    }
+    .hero-tag strong {
+      font-style: normal;
+      color: var(--ink);
+      font-weight: 500;
+    }
+
+    /* Small portrait */
+    .hero-photo {
+      position: relative;
+      width: 220px;
+    }
+    .hero-photo .frame {
+      position: relative;
+      aspect-ratio: 4 / 5;
+      background: var(--surface);
+      border: 1px solid var(--rule);
+      overflow: hidden;
+    }
+    .hero-photo img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      filter: contrast(1.04) saturate(0.95);
+      transition: filter 0.4s;
+    }
+    .hero-photo:hover img { filter: contrast(1.08) saturate(1.05); }
+    .hero-photo .tag {
+      position: absolute;
+      bottom: -10px;
+      left: -10px;
+      background: var(--accent);
+      color: var(--bg-soft);
+      font-family: var(--mono);
+      font-size: 9.5px;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      padding: 6px 10px;
+      font-weight: 500;
+      z-index: 3;
+    }
+    .hero-photo .stamp {
+      position: absolute;
+      top: 10px;
+      right: 10px;
+      font-family: var(--mono);
+      font-size: 9px;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--bg-soft);
+      background: rgba(22, 24, 26, 0.7);
+      padding: 3px 7px;
+      z-index: 3;
+    }
+
+    .hero-links {
+      grid-column: 1 / -1;
+      margin-top: 40px;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 22px 32px;
+      padding-top: 22px;
+      border-top: 1px dashed var(--rule);
+      font-family: var(--mono);
+      font-size: 12px;
+      letter-spacing: 0.06em;
+    }
+    .hero-links a {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      color: var(--ink-soft);
+      transition: color 0.2s, transform 0.2s;
+    }
+    .hero-links a:hover { color: var(--accent); transform: translateY(-1px); }
+    .hero-links a::before {
+      content: "→";
+      color: var(--accent);
+      transition: transform 0.2s;
+    }
+    .hero-links a:hover::before { transform: translateX(3px); }
+
+    @media (max-width: 820px) {
+      .hero-grid { grid-template-columns: 1fr; gap: 32px; }
+      .hero-photo { width: 180px; order: -1; }
+      .hero { padding: 44px 0 40px; }
+    }
+
+    /* ========== SECTION TITLES ========== */
+    .section {
+      padding: 60px 0;
+      border-bottom: 1px solid var(--rule);
+      position: relative;
+    }
+    .sec-head {
+      display: grid;
+      grid-template-columns: 180px 1fr;
+      gap: 50px;
+      margin-bottom: 36px;
+      align-items: baseline;
+    }
+    .sec-tag {
+      font-family: var(--mono);
+      font-size: 10.5px;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      color: var(--accent);
+      padding-top: 10px;
+      border-top: 2px solid var(--accent);
+      align-self: start;
+    }
+    .sec-title {
+      font-family: var(--serif);
+      font-size: clamp(32px, 4.6vw, 58px);
+      line-height: 1.02;
+      letter-spacing: -0.03em;
+      font-weight: 400;
+      font-variation-settings: "SOFT" 40, "opsz" 96;
+      color: var(--ink);
+    }
+    .sec-title em {
+      font-style: italic;
+      font-variation-settings: "SOFT" 100, "opsz" 96, "wght" 350;
+      color: var(--accent);
+    }
+    @media (max-width: 720px) {
+      .sec-head { grid-template-columns: 1fr; gap: 12px; margin-bottom: 26px; }
+      .section { padding: 44px 0; }
+    }
+
+    /* ========== ABOUT ========== */
+    .about-grid {
+      display: grid;
+      grid-template-columns: 180px 1fr;
+      gap: 50px;
+    }
+    .about-body {
+      max-width: 760px;
+      font-size: 18.5px;
+      line-height: 1.6;
+      color: var(--ink-soft);
+      font-weight: 300;
+    }
+    .about-body p + p { margin-top: 16px; }
+    .about-body a {
+      color: var(--ink);
+      border-bottom: 1px solid var(--accent);
+      padding-bottom: 1px;
+      transition: color 0.2s;
+    }
+    .about-body a:hover { color: var(--accent); }
+    .about-body strong { color: var(--ink); font-weight: 500; }
+
+    .edu-strip {
+      margin-top: 32px;
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1px;
+      background: var(--rule);
+      border: 1px solid var(--rule);
+    }
+    .edu-strip .cell {
+      background: var(--surface);
+      padding: 18px 20px;
+      transition: background 0.3s;
+    }
+    .edu-strip .cell:hover { background: var(--surface-2); }
+    .edu-strip .deg {
+      font-family: var(--mono);
+      font-size: 9.5px;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin-bottom: 6px;
+    }
+    .edu-strip .place {
+      font-family: var(--serif);
+      font-size: 19px;
+      line-height: 1.2;
+      letter-spacing: -0.01em;
+      font-variation-settings: "SOFT" 30, "opsz" 36;
+      color: var(--ink);
+    }
+    .edu-strip .field {
+      font-size: 13px;
+      color: var(--ink-faded);
+      margin-top: 4px;
+      font-style: italic;
+    }
+    @media (max-width: 820px) {
+      .about-grid { grid-template-columns: 1fr; gap: 20px; }
+      .edu-strip { grid-template-columns: 1fr; }
+    }
+
+    /* ========== RESEARCH ========== */
+    .research-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 32px;
+    }
+    .thrust {
+      padding: 26px 28px 28px;
+      background: var(--surface);
+      border: 1px solid var(--rule);
+      position: relative;
+      overflow: hidden;
+      transition: transform 0.3s, border-color 0.3s, background 0.3s;
+    }
+    .thrust::before {
+      content: "";
+      position: absolute;
+      top: 0; left: 0;
+      width: 3px; height: 0;
+      background: var(--accent);
+      transition: height 0.4s ease;
+    }
+    .thrust:hover {
+      transform: translateY(-3px);
+      border-color: var(--accent);
+      background: var(--surface-2);
+    }
+    .thrust:hover::before { height: 100%; }
+    .thrust-num {
+      position: absolute;
+      top: 18px;
+      right: 24px;
+      font-family: var(--serif);
+      font-size: 64px;
+      line-height: 1;
+      color: var(--accent);
+      opacity: 0.18;
+      font-style: italic;
+      font-variation-settings: "SOFT" 100, "opsz" 96;
+    }
+    .thrust-tag {
+      font-family: var(--mono);
+      font-size: 10px;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--ink-faded);
+      margin-bottom: 12px;
+    }
+    .thrust h3 {
+      font-family: var(--serif);
+      font-size: 22px;
+      line-height: 1.2;
+      letter-spacing: -0.02em;
+      font-weight: 400;
+      font-variation-settings: "SOFT" 40, "opsz" 48;
+      margin-bottom: 10px;
+      max-width: 88%;
+      color: var(--ink);
+    }
+    .thrust p {
+      font-size: 14.5px;
+      line-height: 1.55;
+      color: var(--ink-soft);
+    }
+    @media (max-width: 760px) {
+      .research-grid { grid-template-columns: 1fr; gap: 16px; }
+    }
+
+    /* ========== PUBLICATIONS — FEATURED ========== */
+    .featured {
+      background:
+        linear-gradient(135deg, var(--accent-tint), transparent 55%),
+        var(--surface);
+      border: 1px solid var(--rule);
+      border-left: 3px solid var(--accent);
+      padding: 36px 40px 34px;
+      margin-bottom: 24px;
+      position: relative;
+      overflow: hidden;
+      box-shadow: 0 18px 50px -32px rgba(214, 61, 28, 0.35);
+    }
+    .featured::before {
+      content: "FEATURED · POLICY IMPACT";
+      position: absolute;
+      top: 18px;
+      right: 22px;
+      font-family: var(--mono);
+      font-size: 9.5px;
+      letter-spacing: 0.22em;
+      color: var(--accent);
+      font-weight: 600;
+    }
+    .featured::after {
+      content: "★";
+      position: absolute;
+      bottom: -50px;
+      right: -10px;
+      font-size: 220px;
+      color: var(--accent);
+      opacity: 0.05;
+      line-height: 1;
+      font-family: var(--serif);
+    }
+    .featured-meta {
+      font-family: var(--mono);
+      font-size: 10.5px;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin-bottom: 14px;
+      font-weight: 500;
+    }
+    .featured h3 {
+      font-family: var(--serif);
+      font-size: clamp(24px, 3vw, 34px);
+      line-height: 1.18;
+      letter-spacing: -0.02em;
+      font-weight: 400;
+      font-variation-settings: "SOFT" 30, "opsz" 60;
+      margin-bottom: 16px;
+      max-width: 88%;
+      position: relative;
+      z-index: 2;
+      color: var(--ink);
+    }
+    .featured h3 em {
+      font-style: italic;
+      font-variation-settings: "SOFT" 100, "opsz" 60, "wght" 350;
+      color: var(--accent);
+    }
+    .featured-authors {
+      font-family: var(--read);
+      font-size: 15.5px;
+      color: var(--ink-soft);
+      margin-bottom: 18px;
+      font-style: italic;
+      font-weight: 300;
+      position: relative;
+      z-index: 2;
+    }
+    .featured-authors strong {
+      color: var(--ink);
+      font-style: normal;
+      font-weight: 500;
+      border-bottom: 1px solid var(--accent);
+      padding-bottom: 1px;
+    }
+    .featured-impact {
+      display: grid;
+      grid-template-columns: 110px 1fr;
+      gap: 18px;
+      padding: 14px 0;
+      border-top: 1px solid var(--rule);
+      font-size: 13.5px;
+      line-height: 1.5;
+      align-items: baseline;
+      position: relative;
+      z-index: 2;
+    }
+    .featured-impact:last-of-type { border-bottom: 1px solid var(--rule); }
+    .featured-impact .label {
+      font-family: var(--mono);
+      font-size: 9.5px;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--accent);
+    }
+    .featured-impact .body { color: var(--ink-soft); }
+    .featured-impact .body a {
+      color: var(--ink);
+      border-bottom: 1px dotted var(--ink-faded);
+      transition: border-color 0.2s, color 0.2s;
+    }
+    .featured-impact .body a:hover { border-color: var(--accent); color: var(--accent); }
+    .featured-links {
+      margin-top: 18px;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      position: relative;
+      z-index: 2;
+    }
+    .pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      font-family: var(--mono);
+      font-size: 10.5px;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      padding: 6px 11px;
+      border: 1px solid var(--rule);
+      color: var(--ink);
+      transition: background 0.2s, color 0.2s, border-color 0.2s;
+      background: var(--bg-soft);
+    }
+    .pill:hover { background: var(--accent); border-color: var(--accent); color: var(--bg-soft); }
+
+    @media (max-width: 720px) {
+      .featured { padding: 24px 22px 24px; }
+      .featured::before { position: static; display: block; margin-bottom: 12px; }
+      .featured-impact { grid-template-columns: 1fr; gap: 4px; }
+    }
+
+    /* Regular paper list */
+    .pubs { list-style: none; }
+    .pub {
+      display: grid;
+      grid-template-columns: 100px 1fr;
+      gap: 36px;
+      padding: 22px 0;
+      border-top: 1px solid var(--rule);
+      position: relative;
+      transition: padding 0.3s;
+    }
+    .pub:last-child { border-bottom: 1px solid var(--rule); }
+    .pub:hover { padding-left: 14px; }
+    .pub::before {
+      content: "";
+      position: absolute;
+      left: 0;
+      top: 22px;
+      bottom: 22px;
+      width: 2px;
+      background: var(--accent);
+      transform: scaleY(0);
+      transform-origin: top;
+      transition: transform 0.3s ease;
+    }
+    .pub:hover::before { transform: scaleY(1); }
+    .pub-meta {
+      font-family: var(--mono);
+      font-size: 10.5px;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--ink-faded);
+      padding-top: 5px;
+    }
+    .pub-meta .year {
+      display: block;
+      color: var(--accent);
+      font-size: 20px;
+      font-weight: 500;
+      letter-spacing: 0;
+      margin-bottom: 2px;
+      font-family: var(--serif);
+      font-variation-settings: "SOFT" 30, "opsz" 36;
+    }
+    .pub-meta .new {
+      display: inline-block;
+      background: var(--accent);
+      color: var(--bg-soft);
+      padding: 2px 6px;
+      font-size: 9px;
+      letter-spacing: 0.16em;
+      margin-top: 4px;
+      font-weight: 500;
+    }
+    .pub-title {
+      font-family: var(--serif);
+      font-size: clamp(19px, 1.9vw, 23px);
+      line-height: 1.25;
+      letter-spacing: -0.018em;
+      font-weight: 400;
+      font-variation-settings: "SOFT" 30, "opsz" 36;
+      margin-bottom: 8px;
+      transition: color 0.2s;
+      color: var(--ink);
+    }
+    .pub:hover .pub-title { color: var(--accent); }
+    .pub-authors {
+      font-size: 14.5px;
+      color: var(--ink-soft);
+      font-style: italic;
+      font-weight: 300;
+      margin-bottom: 10px;
+    }
+    .pub-authors strong {
+      font-style: normal;
+      font-weight: 500;
+      color: var(--ink);
+      border-bottom: 1px solid var(--accent);
+      padding-bottom: 1px;
+    }
+    .pub-venue {
+      font-family: var(--mono);
+      font-size: 11.5px;
+      color: var(--ink);
+      margin-bottom: 10px;
+    }
+    .pub-venue a {
+      color: var(--accent);
+      border-bottom: 1px dotted var(--accent);
+      padding-bottom: 1px;
+    }
+    .pub-venue .rate {
+      color: var(--ink-faded);
+      font-style: italic;
+      font-family: var(--read);
+      font-size: 12.5px;
+    }
+    .pub-links { display: flex; flex-wrap: wrap; gap: 6px; }
+    .pub-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      font-family: var(--mono);
+      font-size: 10px;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      padding: 4px 9px;
+      border: 1px solid var(--rule);
+      color: var(--ink-soft);
+      background: transparent;
+      transition: all 0.2s;
+    }
+    .pub-link:hover {
+      background: var(--ink);
+      color: var(--bg-soft);
+      border-color: var(--ink);
+    }
+
+    @media (max-width: 720px) {
+      .pub { grid-template-columns: 1fr; gap: 8px; }
+      .pub-meta { padding-top: 0; }
+    }
+
+    /* ========== NEWS ========== */
+    .news-list { list-style: none; max-width: 820px; }
+    .news-item {
+      display: grid;
+      grid-template-columns: 120px 1fr;
+      gap: 30px;
+      padding: 12px 0;
+      border-bottom: 1px dashed var(--rule);
+      align-items: baseline;
+      transition: background 0.2s, padding 0.2s, margin 0.2s;
+    }
+    .news-item:hover {
+      background: var(--surface);
+      padding-left: 12px;
+      padding-right: 12px;
+      margin: 0 -12px;
+    }
+    .news-date {
+      font-family: var(--mono);
+      font-size: 10.5px;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      color: var(--accent);
+      font-weight: 500;
+    }
+    .news-text {
+      font-size: 15.5px;
+      color: var(--ink);
+      font-weight: 400;
+    }
+    .news-text strong { color: var(--ink); }
+    .news-text .badge {
+      display: inline-block;
+      font-family: var(--mono);
+      font-size: 9px;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--bg-soft);
+      background: var(--accent);
+      padding: 2px 6px;
+      margin-left: 8px;
+      vertical-align: middle;
+      font-weight: 500;
+    }
+    @media (max-width: 600px) {
+      .news-item { grid-template-columns: 1fr; gap: 3px; }
+    }
+
+    /* ========== TWO-COLUMN ========== */
+    .twocol {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 60px;
+    }
+    .col-block h3 {
+      font-family: var(--serif);
+      font-size: 24px;
+      line-height: 1.15;
+      letter-spacing: -0.02em;
+      font-weight: 400;
+      font-variation-settings: "SOFT" 40, "opsz" 36;
+      margin-bottom: 16px;
+      padding-bottom: 10px;
+      border-bottom: 1px solid var(--rule);
+      color: var(--ink);
+    }
+    .col-block h3 em {
+      font-style: italic;
+      color: var(--accent);
+      font-variation-settings: "SOFT" 100, "opsz" 36, "wght" 350;
+    }
+    .col-list { list-style: none; }
+    .col-list li {
+      padding: 8px 0;
+      font-size: 14.5px;
+      color: var(--ink-soft);
+      line-height: 1.5;
+      border-bottom: 1px dashed var(--rule);
+      display: grid;
+      grid-template-columns: 16px 1fr;
+      gap: 10px;
+    }
+    .col-list li::before {
+      content: "▸";
+      color: var(--accent);
+      font-size: 11px;
+      padding-top: 4px;
+    }
+    @media (max-width: 760px) {
+      .twocol { grid-template-columns: 1fr; gap: 36px; }
+    }
+
+    /* ========== BLOG ========== */
+    .blog-card {
+      display: block;
+      max-width: 680px;
+      padding: 22px 28px;
+      background: var(--surface);
+      border: 1px solid var(--rule);
+      transition: transform 0.3s, border-color 0.3s, background 0.3s;
+      position: relative;
+    }
+    .blog-card:hover {
+      transform: translateX(6px);
+      border-color: var(--accent);
+      background: var(--surface-2);
+    }
+    .blog-card .meta {
+      font-family: var(--mono);
+      font-size: 10px;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin-bottom: 8px;
+      font-weight: 500;
+    }
+    .blog-card h3 {
+      font-family: var(--serif);
+      font-size: 21px;
+      line-height: 1.2;
+      letter-spacing: -0.018em;
+      font-weight: 400;
+      font-variation-settings: "SOFT" 40, "opsz" 36;
+      color: var(--ink);
+    }
+    .blog-card .arrow {
+      position: absolute;
+      top: 22px;
+      right: 28px;
+      font-family: var(--serif);
+      font-size: 24px;
+      color: var(--accent);
+      transition: transform 0.3s;
+    }
+    .blog-card:hover .arrow { transform: translate(4px, -4px); }
+
+    /* ========== FOOTER ========== */
+    footer {
+      padding: 70px 0 40px;
+      background: var(--ink);
+      color: var(--bg-soft);
+      position: relative;
+      overflow: hidden;
+    }
+    footer::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(800px 400px at 85% 0%, rgba(214, 61, 28, 0.12), transparent 60%);
+      pointer-events: none;
+    }
+    .foot-mark {
+      font-family: var(--serif);
+      font-size: clamp(60px, 12vw, 180px);
+      line-height: 0.9;
+      letter-spacing: -0.045em;
+      font-weight: 400;
+      font-variation-settings: "SOFT" 30, "opsz" 144;
+      color: var(--bg-soft);
+      position: relative;
+    }
+    .foot-mark em {
+      font-style: italic;
+      color: var(--accent);
+      font-variation-settings: "SOFT" 100, "opsz" 144, "wght" 350;
+    }
+    .foot-grid {
+      margin-top: 44px;
+      display: grid;
+      grid-template-columns: 2fr 1fr 1fr 1fr;
+      gap: 40px;
+      position: relative;
+    }
+    .foot-grid h4 {
+      font-family: var(--mono);
+      font-size: 10px;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin-bottom: 14px;
+      font-weight: 500;
+    }
+    .foot-grid p, .foot-grid a, .foot-grid li {
+      font-size: 14px;
+      line-height: 1.65;
+      color: rgba(241, 243, 236, 0.7);
+    }
+    .foot-grid ul { list-style: none; }
+    .foot-grid a { transition: color 0.2s; display: block; padding: 2px 0; }
+    .foot-grid a:hover { color: var(--accent); }
+
+    .foot-bottom {
+      margin-top: 44px;
+      padding-top: 18px;
+      border-top: 1px solid rgba(241, 243, 236, 0.12);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-family: var(--mono);
+      font-size: 10px;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      color: rgba(241, 243, 236, 0.45);
+      position: relative;
+    }
+    @media (max-width: 760px) {
+      .foot-grid { grid-template-columns: 1fr 1fr; gap: 28px; }
+      .foot-bottom { flex-direction: column; gap: 10px; align-items: flex-start; }
+    }
+
+    /* ========== ANIMATIONS ========== */
+    @keyframes rise {
+      from { opacity: 0; transform: translateY(20px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+    .reveal { opacity: 0; animation: rise 0.8s cubic-bezier(.2,.7,.2,1) forwards; }
+    .reveal.d1 { animation-delay: 0.08s; }
+    .reveal.d2 { animation-delay: 0.2s; }
+    .reveal.d3 { animation-delay: 0.32s; }
+    .reveal.d4 { animation-delay: 0.44s; }
+
+    .iv { opacity: 0; transform: translateY(22px); transition: opacity 0.8s ease, transform 0.8s cubic-bezier(.2,.7,.2,1); }
+    .iv.in { opacity: 1; transform: translateY(0); }
+
+    @media (prefers-reduced-motion: reduce) {
+      .reveal, .iv { animation: none !important; opacity: 1 !important; transform: none !important; transition: none !important; }
+      html { scroll-behavior: auto; }
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- =================== NAV =================== -->
+  <nav class="nav">
+    <div class="nav-inner">
+      <a href="#top" class="nav-mark">Hassan <em>Iqbal</em></a>
+      <ul class="nav-links">
+        <li><a href="#about">About</a></li>
+        <li><a href="#research">Research</a></li>
+        <li><a href="#publications">Papers</a></li>
+        <li><a href="#news">News</a></li>
+        <li><a href="#teaching">Teaching</a></li>
+        <li><a href="https://github.com/iqbal-h/hiqbal/blob/main/pdfs/HassanIqbal_Resume.pdf" target="_blank" rel="noopener">Resume ↗</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <!-- =================== HERO =================== -->
+  <header id="top" class="hero">
+    <div class="wrap">
+      <div class="hero-grid">
+        <div>
+          <div class="hero-meta reveal d1">PhD · NC State '23 · Now @ HPE</div>
+          <h1 class="hero-name reveal d2">
+            Hassan
+            <span class="last">Iqbal.</span>
+          </h1>
+          <p class="hero-tag reveal d3">
+            <strong>Systems software engineer</strong> on the data path at HPE's storage business unit, where I work on object and file system internals, concurrency primitives, and POSIX-compliant storage semantics. My research background spans networked systems, cloud performance measurement, and applied machine learning — with a focus on the quality of experience of streaming applications and the performance of public-cloud infrastructure.
+          </p>
+        </div>
+
+        <div class="hero-photo reveal d3">
+          <div class="frame">
+            <img src="hiqbal.jpg" alt="Portrait of Hassan Iqbal" onerror="this.style.display='none'; this.parentElement.style.background='linear-gradient(135deg, var(--surface), var(--surface-2))';">
+          </div>
+        </div>
+
+        <div class="hero-links reveal d4">
+          <a href="https://github.com/iqbal-h" target="_blank" rel="noopener">GitHub</a>
+          <a href="https://scholar.google.com/citations?hl=en&user=Y1QaCacAAAAJ" target="_blank" rel="noopener">Google Scholar</a>
+          <a href="https://www.linkedin.com/in/hiqbal1/" target="_blank" rel="noopener">LinkedIn</a>
+          <a href="https://twitter.com/iqbhas" target="_blank" rel="noopener">Twitter / X</a>
+          <a href="https://github.com/iqbal-h/hiqbal/blob/main/pdfs/HassanIqbal_Resume.pdf" target="_blank" rel="noopener">Resume PDF</a>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <!-- =================== ABOUT =================== -->
+  <section id="about" class="section">
+    <div class="wrap">
+      <div class="sec-head iv">
+        <div class="sec-tag">§ 01 / About</div>
+        <h2 class="sec-title">A short <em>biography.</em></h2>
+      </div>
+
+      <div class="about-grid">
+        <div></div>
+        <div class="about-body iv">
+          <p>
+            I completed my PhD in 2023 in the Department of Computer Science at <a href="https://www.ncsu.edu/" target="_blank" rel="noopener">North Carolina State University</a>, advised by <a href="https://people.engr.ncsu.edu/mshahza/" target="_blank" rel="noopener">Prof. Muhammad Shahzad</a>. Before NC State, I earned an <strong>MSc in Electrical Engineering (Networks)</strong> from <a href="https://lums.edu.pk/" target="_blank" rel="noopener">LUMS</a> and a <strong>BSc in Telecommunication Engineering</strong> from <a href="http://lhr.nu.edu.pk/" target="_blank" rel="noopener">NUCES, Lahore</a>.
+          </p>
+          <p>
+            Today I work as a <strong>Systems Software Engineer (L3)</strong> in HPE's storage business unit, on the data&nbsp;path — object and file system internals, concurrency primitives, and POSIX semantics. My academic work has been recognized at venues including ACM&nbsp;WWW, SIGCHI, SIGMETRICS, CoNEXT, SenSys, IEEE/ACM Transactions on Networking, and the IETF — and one paper made its way into a U.S. Senate bill.
+          </p>
+
+          <div class="edu-strip">
+            <div class="cell">
+              <div class="deg">PhD '23</div>
+              <div class="place">NC State University</div>
+              <div class="field">Computer Science</div>
+            </div>
+            <div class="cell">
+              <div class="deg">MSc</div>
+              <div class="place">LUMS</div>
+              <div class="field">Electrical Engineering — Networks</div>
+            </div>
+            <div class="cell">
+              <div class="deg">BSc</div>
+              <div class="place">NUCES Lahore</div>
+              <div class="field">Telecommunication Engineering</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- =================== RESEARCH =================== -->
+  <section id="research" class="section">
+    <div class="wrap">
+      <div class="sec-head iv">
+        <div class="sec-tag">§ 02 / Research</div>
+        <h2 class="sec-title">Two <em>thrusts.</em></h2>
+      </div>
+
+      <div class="research-grid">
+        <div class="thrust iv">
+          <div class="thrust-num">01</div>
+          <div class="thrust-tag">Measurement</div>
+          <h3>Quality of experience &amp; performance characterization at cloud scale.</h3>
+          <p>Empirical analyses of video and game-streaming applications, plus the global network infrastructure of public clouds — measurements that turn vague performance complaints into data you can act on.</p>
+        </div>
+        <div class="thrust iv">
+          <div class="thrust-num">02</div>
+          <div class="thrust-tag">Systems</div>
+          <h3>Application- and transport-layer mechanisms, augmented by deep learning.</h3>
+          <p>Protocol-level interventions — informed by what the measurements actually say — to improve the experience of streaming applications running in the cloud.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- =================== PUBLICATIONS =================== -->
+  <section id="publications" class="section">
+    <div class="wrap">
+      <div class="sec-head iv">
+        <div class="sec-tag">§ 03 / Selected Papers</div>
+        <h2 class="sec-title">Peer-reviewed <em>publications.</em></h2>
+      </div>
+
+      <article class="featured iv">
+        <div class="featured-meta">ACM WWW · 2022</div>
+        <h3>Left or Right: <em>A Peek into the Political Biases</em> in Email Spam Filtering Algorithms During US Election 2020</h3>
+        <p class="featured-authors">
+          <strong>Hassan Iqbal</strong>, Usman Mahmood Khan, Hassan Ali Khan, Muhammad Shahzad
+        </p>
+
+        <div class="featured-impact">
+          <span class="label">Policy Impact</span>
+          <span class="body">
+            Cited in U.S. Senate press releases by
+            <a href="https://www.scott.senate.gov/media-center/press-releases/scott-thune-senate-republicans-introduce-political-bias-emails-act" target="_blank" rel="noopener">Sen.&nbsp;Scott</a>
+            and
+            <a href="https://www.kennedy.senate.gov/public/2022/6/kennedy-thune-introduce-political-bias-emails-act-to-hold-big-tech-accountable-for-political-bias" target="_blank" rel="noopener">Sen.&nbsp;Kennedy</a>;
+            informed the
+            <a href="https://www.congress.gov/bill/117th-congress/senate-bill/4409?r=5&s=1" target="_blank" rel="noopener">Political BIAS Emails Act of 2022</a>
+            and a
+            <a href="https://www.fec.gov/data/legal/advisory-opinions/2022-14/" target="_blank" rel="noopener">Google&nbsp;LLC FEC Advisory Opinion</a>.
+          </span>
+        </div>
+        <div class="featured-impact">
+          <span class="label">Press</span>
+          <span class="body">
+            Covered in
+            <a href="https://www.bloomberg.com/news/articles/2022-07-05/gmail-spam-filter-rules-anger-republican-politicians" target="_blank" rel="noopener">Bloomberg</a>
+            and
+            <a href="https://www.washingtonpost.com/politics/2022/05/25/republicans-seized-study-proof-googles-bias-its-authors-say-it-being-misrepresented/" target="_blank" rel="noopener">The Washington Post</a>.
+          </span>
+        </div>
+
+        <div class="featured-links">
+          <a class="pill" href="https://doi.org/10.1145/3485447.3512121" target="_blank" rel="noopener">DOI ↗</a>
+          <a class="pill" href="https://arxiv.org/abs/2203.16743" target="_blank" rel="noopener">arXiv ↗</a>
+        </div>
+      </article>
+
+      <ol class="pubs">
+
+        <!-- NEW RFC PUBLICATION -->
+        <li class="pub iv">
+          <div class="pub-meta">
+            <span class="year">2026</span>
+            IETF · Standard
+            <span class="new">New</span>
+          </div>
+          <div>
+            <h3 class="pub-title">RFC 9944: Device Schema Extensions to the System for Cross-Domain Identity Management (SCIM) Model</h3>
+            <p class="pub-authors">Muhammad Shahzad, <strong>Hassan Iqbal</strong>, Eliot Lear</p>
+            <p class="pub-venue"><a href="https://www.rfc-editor.org/rfc/rfc9944" target="_blank" rel="noopener">IETF RFC Editor</a> <span class="rate">— Published May 2026, Standards Track</span></p>
+            <div class="pub-links">
+              <a class="pub-link" href="https://www.rfc-editor.org/rfc/rfc9944" target="_blank" rel="noopener">RFC 9944 ↗</a>
+            </div>
+          </div>
+        </li>
+
+        <li class="pub iv">
+          <div class="pub-meta"><span class="year">2022</span>Conference</div>
+          <div>
+            <h3 class="pub-title">RMS: Removing Barriers to Analyze the Availability and Surge Pricing of Ridesharing Services</h3>
+            <p class="pub-authors">Hassan Ali Khan, <strong>Hassan Iqbal</strong>, Muhammad Shahzad, Guoliang Jin</p>
+            <p class="pub-venue"><a href="https://chi2022.acm.org/" target="_blank" rel="noopener">ACM SIGCHI 2022</a></p>
+            <div class="pub-links">
+              <a class="pub-link" href="https://doi.org/10.1145/3491102.3517464" target="_blank" rel="noopener">DOI</a>
+              <a class="pub-link" href="https://github.com/rmsstudydata/graphScripts" target="_blank" rel="noopener">GitHub</a>
+              <a class="pub-link" href="https://rmstool.com/" target="_blank" rel="noopener">RMSTool</a>
+            </div>
+          </div>
+        </li>
+
+        <li class="pub iv">
+          <div class="pub-meta"><span class="year">2022</span>Conference</div>
+          <div>
+            <h3 class="pub-title">Dissecting Cloud Gaming Performance with DECAF</h3>
+            <p class="pub-authors"><strong>Hassan Iqbal</strong>, Ayesha Khalid, Muhammad Shahzad</p>
+            <p class="pub-venue"><a href="https://www.sigmetrics.org/sigmetrics2022/" target="_blank" rel="noopener">ACM SIGMETRICS 2022</a></p>
+            <div class="pub-links">
+              <a class="pub-link" href="https://doi.org/10.1145/3489048.3522628" target="_blank" rel="noopener">Abstract DOI</a>
+              <a class="pub-link" href="https://dl.acm.org/doi/10.1145/3491043" target="_blank" rel="noopener">Paper DOI</a>
+              <a class="pub-link" href="https://github.com/decafCG/decaf" target="_blank" rel="noopener">GitHub</a>
+            </div>
+          </div>
+        </li>
+
+        <li class="pub iv">
+          <div class="pub-meta"><span class="year">2022</span>Journal</div>
+          <div>
+            <h3 class="pub-title">Characterizing the Availability and Latency in AWS Network from the Perspective of Tenants</h3>
+            <p class="pub-authors"><strong>Hassan Iqbal</strong>, Anand Singh, Muhammad Shahzad</p>
+            <p class="pub-venue"><a href="https://ieeexplore.ieee.org/xpl/RecentIssue.jsp?punumber=90" target="_blank" rel="noopener">IEEE/ACM Transactions on Networking</a> <span class="rate">— Impact factor 3.56 at acceptance</span></p>
+            <div class="pub-links">
+              <a class="pub-link" href="https://doi.org/10.1109/TNET.2022.3148701" target="_blank" rel="noopener">DOI</a>
+              <a class="pub-link" href="https://github.com/iqbal-h/CALM" target="_blank" rel="noopener">GitHub</a>
+            </div>
+          </div>
+        </li>
+
+        <li class="pub iv">
+          <div class="pub-meta"><span class="year">2018</span>Conference</div>
+          <div>
+            <h3 class="pub-title">Scylla: Interleaving Multiple IoT Stacks on a Single Radio</h3>
+            <p class="pub-authors"><strong>Hassan Iqbal</strong>, Hamad Alizai, Ihsan Ayyub Qazi, Olaf Landsiedel, Zartash Afzal Uzmi</p>
+            <p class="pub-venue"><a href="https://conferences2.sigcomm.org/co-next/2018/" target="_blank" rel="noopener">ACM CoNEXT 2018</a> <span class="rate">— Acceptance rate 17%</span></p>
+            <div class="pub-links">
+              <a class="pub-link" href="https://dl.acm.org/doi/10.1145/3281411.3281412" target="_blank" rel="noopener">DOI</a>
+              <a class="pub-link" href="https://github.com/iqbal-h/hiqbal/tree/main/pdfs/scylla.pdf" target="_blank" rel="noopener">PDF</a>
+            </div>
+          </div>
+        </li>
+
+        <li class="pub iv">
+          <div class="pub-meta"><span class="year">2017</span>Conference</div>
+          <div>
+            <h3 class="pub-title">Taming Link-layer Heterogeneity in IoT through Interleaving Multiple Link-Layers over a Single Radio</h3>
+            <p class="pub-authors"><strong>Hassan Iqbal</strong>, Muhammad Hamad Alizai, Zartash Afzal Uzmi, Olaf Landsiedel</p>
+            <p class="pub-venue"><a href="http://sensys.acm.org/2017/" target="_blank" rel="noopener">ACM SenSys 2017</a> <span class="rate">— Acceptance rate 17.2%</span></p>
+            <div class="pub-links">
+              <a class="pub-link" href="https://dl.acm.org/doi/10.1145/3131672.3136966" target="_blank" rel="noopener">DOI</a>
+              <a class="pub-link" href="http://web.lums.edu.pk/~alizai/pubs/2017_sensys_hassan.pdf" target="_blank" rel="noopener">PDF</a>
+            </div>
+          </div>
+        </li>
+      </ol>
+    </div>
+  </section>
+
+  <!-- =================== NEWS =================== -->
+  <section id="news" class="section">
+    <div class="wrap">
+      <div class="sec-head iv">
+        <div class="sec-tag">§ 04 / Updates</div>
+        <h2 class="sec-title">Recent <em>news.</em></h2>
+      </div>
+
+      <ul class="news-list iv">
+        <li class="news-item">
+          <span class="news-date">May · 2026</span>
+          <span class="news-text">Co-authored <strong>RFC&nbsp;9944</strong> published by the IETF — Device Schema Extensions to SCIM.<span class="badge">Standard</span></span>
+        </li>
+        <li class="news-item">
+          <span class="news-date">Jul · 2023</span>
+          <span class="news-text">Joined Hewlett Packard Enterprise as a Software Engineer.<span class="badge">Career</span></span>
+        </li>
+        <li class="news-item">
+          <span class="news-date">Jun · 2023</span>
+          <span class="news-text">Successfully defended my PhD final exam at NC State.<span class="badge">Milestone</span></span>
+        </li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- =================== TEACHING + SERVICES =================== -->
+  <section id="teaching" class="section">
+    <div class="wrap">
+      <div class="sec-head iv">
+        <div class="sec-tag">§ 05 / Service</div>
+        <h2 class="sec-title">Teaching, mentorship <em>&amp; service.</em></h2>
+      </div>
+
+      <div class="twocol">
+        <div class="col-block iv">
+          <h3>Teaching <em>assistant.</em></h3>
+          <ul class="col-list">
+            <li>CSC/ECE 573 — Internet Protocols, Spring 2020</li>
+            <li>CSC/ECE 573 — Internet Protocols, Fall 2018</li>
+          </ul>
+        </div>
+
+        <div class="col-block iv">
+          <h3>Academic <em>service.</em></h3>
+          <ul class="col-list">
+            <li>Mentored two undergraduates on convolutional neural networks &amp; transfer learning — GEARS Summer 2021</li>
+            <li>Mentored two undergraduates on high-accuracy video timestamping — GEARS Summer 2021</li>
+            <li>Mentored two undergraduates on web application algorithm analysis — GEARS Summer 2020</li>
+            <li>Mentored two undergraduates on cloud-application performance evaluation — Spring 2020</li>
+            <li>Reviewer — IFIP Networking 2020</li>
+            <li>Reviewer — IEEE Access</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- =================== HONORS =================== -->
+  <section class="section">
+    <div class="wrap">
+      <div class="sec-head iv">
+        <div class="sec-tag">§ 06 / Recognition</div>
+        <h2 class="sec-title">Honors <em>&amp; awards.</em></h2>
+      </div>
+
+      <div class="iv">
+        <ul class="col-list" style="max-width: 820px;">
+          <li>NSF Travel Grant — ACM CoNEXT, 2018</li>
+          <li>NCSU Student Travel Grant — ACM IMC, 2018</li>
+          <li>College of Engineering Graduate Merit Award — NCSU, 2018</li>
+          <li>Graduate School Scholarship — fully-funded PhD at NC State University</li>
+          <li>DAAD Summer Research Exchange Grant — 2017</li>
         </ul>
       </div>
-    </nav>
+    </div>
+  </section>
 
+  <!-- =================== BLOG =================== -->
+  <section id="blog" class="section">
+    <div class="wrap">
+      <div class="sec-head iv">
+        <div class="sec-tag">§ 07 / Writing</div>
+        <h2 class="sec-title">From the <em>blog.</em></h2>
+      </div>
 
+      <a class="blog-card iv" href="https://medium.com/@hassaniqbal931/how-to-apply-for-a-ph-d-in-the-usa-f75134c97085" target="_blank" rel="noopener">
+        <div class="meta">Medium · Essay</div>
+        <h3>How to apply for a Ph.D. in the USA</h3>
+        <span class="arrow">↗</span>
+      </a>
+    </div>
+  </section>
 
-    <!-- Page Content -->
-    <div class="container">
+  <!-- =================== FOOTER =================== -->
+  <footer>
+    <div class="wrap">
+      <div class="foot-mark iv">Get in <em>touch.</em></div>
 
-      <div class="row">
-
-        <!-- Entries Column -->
-        <div class="col-md-3" >
-
-          <!-- Contact Info on the Sidebar and image -->
-
-          <div style="font-family: 'Oswald', sans-serif; font-size: 40px;"><b>Hassan Iqbal</b></div><br>
-          <img class="img-responsive" src="hiqbal.jpg" height="600" width="400" alt=""><br>
-          <p>
-            <!-- <b>Office:</b> Room 2241<br> -->
-<!--             Department of Computer Science<br> -->
-<!--             North Carolina State University<br> -->
-<!--             EB2, Centennial Campus <br> -->
-<!--             890 Oval Dr, Raleigh, NC 27606, USA<br> -->
-<!--             <p id="contacts"><b>Email: hiqbal at ncsu dot edu</b><br> -->
-              <a href="https://github.com/iqbal-h" target="_blank">GitHub </a><a href="https://scholar.google.com/citations?user=m-rKCOIAAAAJ&hl=en" target="_blank">GoogleScholar</a> <br>
-              <a href="https://twitter.com/iqbhas" target="_blank">Twitter </a><a href="https://www.linkedin.com/in/hiqbal1/" target="_blank">LinkedIn</a> <br>
-              <br>
-            </p>
-
-          </div> 
-
-          <!-- main info -->
-          <div class="col-md-8" >
-            <div style="margin-top:8vh; text-align:justify;">  
-              <p> I completed my PhD in 2023 under the supervision of <a href="https://people.engr.ncsu.edu/mshahza/">Prof. Muhammad Shahzad</a> in the Department of Computer Science at (<a href="https://www.ncsu.edu/">North Carolina State University</a>). Before joining NC State, I received an MSc in Electrical Engineering (Networks) from <a href="https://lums.edu.pk/">LUMS</a> and BSc in Telecommunication Engineering from <a href="http://lhr.nu.edu.pk/">NUCES, Lahore</a>.<br>
-              </p>
-            </div>
-            <div  style="margin-top:5vh; text-align:justify;"> 
-             <h2>Research Interests</h2> 
-             <p>My research interest spans networking, systems, and applied machine learning. More precisely, I worked on two thrusts: 1) quality of experience analysis of video and game streaming applications and performance characterization of the global network infrastructure of a public cloud, and 2) design of application and transport layer mechanisms, augmented by deep learning, for improving quality of experience of streaming applications in the cloud.</p> 
-
-
-           </div>
-
-           <div style="margin-top:3vh;" >    
-            <h2 id="News">News</h2>			
-
-            <ul>
-              <li>Joined HPE as Software Engineer (July, 2023) </li>
-              <li>Passed Ph.D. Final exam (June, 2023) </li>
-              <li>Passed Ph.D. qualifying exam (September, 2022) </li>
-              <li>Software Engineering Intern at HPE (Summer'22)</li>
-              <li>Paper accepted in TheWebConf'22</li>
-              <li>Paper accepted in ACM SIGCHI'22</li>
-              <li>Paper accepted in ACM SIGMETRICS'22</li>
-              <li>Paper accepted in IEEE/ACM TNET'22</li>
-              <!-- <li>Presented our work at ACM CoNEXT'18 in Crete, Greece</li> -->
-              <!-- <li>College of Engineering Graduate Merit Award, NCSU, 2018</li> -->
-              <!-- <li>Started grad school at NC State University in August, 2018</li> -->
-              <!-- <li>Visiting researcher at ComSys, RWTH Aachen University, Germany in July, 2017</li> -->
-            </ul>
-
-          </div>
-
-          <!-- Publications -->
-          <div style="margin-top:3vh;" >    
-            <h2 id="publications">Publications</h2>
-
-            <!-- <strong>Peer-reviewed</strong><br/> -->
-            <ul>
-
-              
-            
-            <li class="paper"><b> Left or Right: A Peek into the Political Biases in Email Spam Filtering Algorithms During US Election 2020</b><br> 
-              <b>Hassan Iqbal</b>, Usman Mahmood Khan, Hassan Ali Khan, Muhammad Shahzad<br>
-              &nbsp;<a href="https://www2022.thewebconf.org/" target="_blank">ACM WWW'22</a>&nbsp;
-              <!-- <i>(Acceptance rate )</i> -->
-              <!-- ACM <b>WWW</b>, Lyon, France, 2022. <i>(Acceptance rate )</i> -->
-              [&nbsp;<a href="https://doi.org/10.1145/3485447.3512121" target="_blank">DOI</a>&nbsp;]
-              [&nbsp;<a href="https://arxiv.org/abs/2203.16743">arXiv</a>&nbsp;]<br>
-              <b><FONT COLOR="#A74852">Policy Impact:</FONT></b>&nbsp;Senate.gov Press[<a href="https://www.scott.senate.gov/media-center/press-releases/scott-thune-senate-republicans-introduce-political-bias-emails-act">1</a>,
-                                                              <a href="https://www.kennedy.senate.gov/public/2022/6/kennedy-thune-introduce-political-bias-emails-act-to-hold-big-tech-accountable-for-political-bias">2</a>],
-                                                              &nbsp;<a href="https://www.congress.gov/bill/117th-congress/senate-bill/4409?r=5&s=1">Political BIAS Emails Act of 2022</a>,
-                                                              &nbsp;<a href="https://www.fec.gov/data/legal/advisory-opinions/2022-14/">Google LLC AO FEC</a>&nbsp;<br>
-              <b><FONT COLOR="#A74852">Press:</FONT></b>&nbsp;<a href="https://www.bloomberg.com/news/articles/2022-07-05/gmail-spam-filter-rules-anger-republican-politicians">Bloomberg,</a>&nbsp;
-                                                               <a href="https://www.washingtonpost.com/politics/2022/05/25/republicans-seized-study-proof-googles-bias-its-authors-say-it-being-misrepresented/">WashingtonPost</a>&nbsp;<br>
-              
-            </li><br>
-
-            <li class="paper"><b> RMS: Removing Barriers to Analyze the Availability and Surge Pricing of Ridesharing Services</b><br> 
-              Hassan Ali Khan, <b>Hassan Iqbal</b>, Muhammad Shahzad, Guoliang Jin<br>
-              &nbsp;<a href="https://chi2022.acm.org/" target="_blank">ACM SIGCHI'22</a>&nbsp;
-              <!-- <i>(Acceptance rate )</i> -->
-              <!-- ACM <b>SIGCHI</b>, New Orleans, USA, 2022. <i>(Acceptance rate )</i> -->
-              [&nbsp;<a href="https://doi.org/10.1145/3491102.3517464" target="_blank">DOI</a>&nbsp;]
-              [&nbsp;<a href="https://github.com/rmsstudydata/graphScripts" target="_blank">GitHub</a>&nbsp;]
-              [&nbsp;<a href="https://rmstool.com/" target="_blank">RMSTool</a>&nbsp;]
-              <!-- [&nbsp;<a href="https://dl.acm.org/citation.cfm?id=3281412">DOI</a>&nbsp;] -->
-            </li><br>
-            
-
-            <li class="paper"><b> Dissecting Cloud Gaming Performance with DECAF</b><br> 
-              <b>Hassan Iqbal</b>, Ayesha Khalid, Muhammad Shahzad<br>
-              &nbsp;<a href="https://www.sigmetrics.org/sigmetrics2022/" target="_blank">ACM SIGMETRICS'22</a>&nbsp;
-              <!-- <i>(Acceptance rate )</i> -->
-              <!-- ACM <b>SIGMETRICS</b>, Mumbai, India, 2022. <i>(Acceptance rate )</i> -->
-              <!-- <i>ACM (<b>SIGMETRICS</b>), Mumbai, India, 2022.</i> -->
-              [&nbsp;<a href="https://doi.org/10.1145/3489048.3522628" target="_blank">Abstract DOI</a>&nbsp;] 
-              [&nbsp;<a href="https://dl.acm.org/doi/10.1145/3491043" target="_blank">Paper DOI</a>&nbsp;]
-              [&nbsp;<a href="https://github.com/decafCG/decaf">Github</a>&nbsp;]
-              <!-- [&nbsp;<a href="https://dl.acm.org/citation.cfm?id=3281412">DOI</a>&nbsp;] -->
-            </li><br>
-
-            
-            <li class="paper"><b> Characterizing the Availability and Latency in AWS Network from the Perspective of Tenants</b><br> 
-              <b>Hassan Iqbal</b>, Anand Singh, Muhammad Shahzad<br>
-              &nbsp;<a href="https://ieeexplore.ieee.org/xpl/RecentIssue.jsp?punumber=90" target="_blank">IEEE/ACM TNET'22</a>&nbsp;<i>(Impact factor at acceptance 3.56)</i>
-              <!-- IEEE <b>Transactions on Networking</b>, 2022. <i>(Impact factor 3.56)</i> -->
-              [&nbsp;<a href="https://doi.org/10.1109/TNET.2022.3148701" target="_blank">DOI</a>&nbsp;] 
-              [&nbsp;<a href="https://github.com/iqbal-h/CALM" target="_blank">GitHub</a>&nbsp;]
-              <!-- [&nbsp;<a href="https://dl.acm.org/citation.cfm?id=3281412">DOI</a>&nbsp;] -->
-            </li><br>
-
-            <li class="paper"><b> Scylla: Interleaving Multiple IoT Stacks on a Single Radio</b><br> 
-              <b>Hassan Iqbal</b>, Hamad Alizai, Ihsan Ayyub Qazi, Olaf Landsiedel, Zartash Afzal Uzmi<br>
-              &nbsp;<a href="https://conferences2.sigcomm.org/co-next/2018/#!/home" target="_blank">ACM CoNEXT'18</a>&nbsp;<i>(Acceptance rate 17%)</i>
-              <!-- ACM <b>CoNEXT</b>, Crete, Greece, 2018. <i>(Acceptance rate 17%)</i> -->
-              [&nbsp;<a href="https://dl.acm.org/doi/10.1145/3281411.3281412" target="_blank">DOI</a>&nbsp;]
-              [&nbsp;<a href="https://github.com/iqbal-h/hiqbal/tree/main/pdfs/scylla.pdf" target="_blank">PDF</a>&nbsp;]
-              <!-- [&nbsp;<a href="https://dl.acm.org/citation.cfm?id=3281412">DOI</a>&nbsp;] -->
-            </li><br>
-
-            <li class="paper"><b>Taming Link-layer Heterogeneity in IoT through Interleaving Multiple Link-Layers over a Single Radio</b>
-              <br> 
-              <b>Hassan Iqbal</b>, Muhammad Hamad Alizai, Zartash Afzal Uzmi, Olaf Landsiedel<br>
-              &nbsp;<a href="http://sensys.acm.org/2017/" target="_blank">ACM SenSys'17</a>&nbsp;<i>(Acceptance rate 17.2%)</i>
-              <!-- ACM <b>SenSys</b>, Delft, The Netherlands, 2017. -->
-              [&nbsp;<a href="https://dl.acm.org/doi/10.1145/3131672.3136966" target="_blank">DOI</a>&nbsp;]
-              [&nbsp;<a href="http://web.lums.edu.pk/~alizai/pubs/2017_sensys_hassan.pdf" target="_blank">PDF</a>&nbsp;]
-            </li><br>						
-
-
+      <div class="foot-grid">
+        <div class="iv">
+          <h4>Currently</h4>
+          <p>Software Engineer at Hewlett Packard Enterprise. Open to research collaborations on networked systems, cloud measurement, and applied ML for streaming applications.</p>
+        </div>
+        <div class="iv">
+          <h4>Profiles</h4>
+          <ul>
+            <li><a href="https://github.com/iqbal-h" target="_blank" rel="noopener">GitHub →</a></li>
+            <li><a href="https://scholar.google.com/citations?hl=en&user=Y1QaCacAAAAJ" target="_blank" rel="noopener">Google Scholar →</a></li>
+            <li><a href="https://www.linkedin.com/in/hiqbal1/" target="_blank" rel="noopener">LinkedIn →</a></li>
+            <li><a href="https://twitter.com/iqbhas" target="_blank" rel="noopener">Twitter / X →</a></li>
           </ul>
-              <!-- Publications
-                <strong>Technical Reports</strong><br/>
-                <ul>
-                <li class="paper" words="add, your, keywords, here"><a href="#">Full title</a>. Details of the report</li>
-              </ul> -->
-            </div>
+        </div>
+        <div class="iv">
+          <h4>Documents</h4>
+          <ul>
+            <li><a href="https://github.com/iqbal-h/hiqbal/blob/main/pdfs/HassanIqbal_Resume.pdf" target="_blank" rel="noopener">Resume PDF →</a></li>
+            <li><a href="https://medium.com/@hassaniqbal931/how-to-apply-for-a-ph-d-in-the-usa-f75134c97085" target="_blank" rel="noopener">Blog →</a></li>
+          </ul>
+        </div>
+        <div class="iv">
+          <h4>Site</h4>
+          <ul>
+            <li><a href="#about">About</a></li>
+            <li><a href="#research">Research</a></li>
+            <li><a href="#publications">Publications</a></li>
+            <li><a href="#news">News</a></li>
+          </ul>
+        </div>
+      </div>
 
+      <div class="foot-bottom">
+        <span>© Hassan Iqbal · Built with care</span>
+        <span>Updated · May 2026</span>
+      </div>
+    </div>
+  </footer>
 
-            <div style="margin-top:3vh; "  >    
-              <h2 id="teaching">Teaching</h2> 				
-              <ul>
-
-                <li> TA for CSC/ECE 573: Internet Protocols, Spring 2020</li>
-                <li> TA for CSC/ECE 573: Internet Protocols, Fall 2018</li>
-
-              </ul>
-
-            </div>
-
-            <div style="margin-top:3vh; "  >    
-              <h2 id="Services">Academic Services</h2> 				
-              <ul>
-
-               <li> Mentor two undergrad students on convolutional neural networks and transfer learning (GEARS Summer 2021) </li>
-               <li> Mentor two undergrad students on high accuracy video time-stamping (GEARS Summer 2021) </li>
-               <li> Reviewer IFIP Networking 2020</li>
-               <li> Reviewer IEEE Access</li>
-               <li> Mentored two undergrad students, GEARS Summer '20, with research focus on web application algorithm analysis </li>
-               <li> Mentored two undergrad students, Spring '20, with research focus on performance evaluation of cloud applications </li>
-             </ul>
-
-           </div>
-
-           <div style="margin-top:3vh;"  >    
-            <h2 id="Honors">Honors and Awards</h2> 				
-            <ul>
-
-             <li> NSF Travel Grant for ACM CoNEXT, 2018 </li>
-             <li> NCSU Student Travel Grant for ACM IMC 2018 </li>
-             <li> College of Engineering Graduate Merit Award, NCSU, 2018 </li>
-             <li> Graduate School Scholarship for fully-funded PhD at NCSU </li>
-             <li> DAAD Summer Research Exchange Grant, 2017 </li>
-             
-           </ul>
-
-           </div>
-           <div style="margin-top:3vh; height: 30vh"  >    
-            <h2 id="blog">Blog</h2> 				
-            <ul>
-              <li> How to Apply for a Ph.D. in the USA? [&nbsp;<a href="https://medium.com/@hassaniqbal931/how-to-apply-for-a-ph-d-in-the-usa-f75134c97085" target="_blank">Link</a>&nbsp;]</li>              
-            </ul>
-          </div>
-
-
-         <!-- Other people may like it too! -->
-    <!-- <p style="font-size:0.8em; float:right;"> <a style="color:#b5bec9" href="https://github.com/mavroudisv/plain-academic">Kudos to Vasilios for the template: Plain Academic</a> </p>
-    -->
-  </div>
-  <!-- /.container -->
-
-
+  <script>
+    const io = new IntersectionObserver((entries) => {
+      entries.forEach(e => {
+        if (e.isIntersecting) {
+          e.target.classList.add('in');
+          io.unobserve(e.target);
+        }
+      });
+    }, { threshold: 0.1, rootMargin: "0px 0px -40px 0px" });
+    document.querySelectorAll('.iv').forEach(el => io.observe(el));
+  </script>
 </body>
-
-
-<!-- Mirrored from andreacerulli.github.io/ by HTTrack Website Copier/3.x [XR&CO'2014], Fri, 04 Oct 2019 01:13:55 GMT -->
 </html>
-
