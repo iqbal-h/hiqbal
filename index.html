@@ -3,8 +3,8 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Hassan Iqbal — Researcher · Engineer</title>
-  <meta name="description" content="Hassan Iqbal — PhD in Computer Science (NC State). Software Engineer at HPE. Research on networked systems, cloud performance, and applied machine learning.">
+  <title>Hassan Iqbal — Systems Engineer · Researcher</title>
+  <meta name="description" content="Hassan Iqbal — Systems software engineer at HPE building distributed file and object storage. PhD in Computer Science (NC State). Research on networked systems, cloud performance, and applied machine learning.">
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -13,15 +13,15 @@
   <style>
     /* ========== TOKENS ========== */
     :root {
-      --bg:          #e9ebe4;        /* pale sage-stone, modern not beige */
-      --bg-soft:     #f1f3ec;
-      --surface:     #f6f7f1;
-      --surface-2:   #fbfbf6;
+      --bg:          #e7e8ea;        /* cool studio gray, echoes the headshot backdrop */
+      --bg-soft:     #f0f1f3;
+      --surface:     #f5f6f8;
+      --surface-2:   #fafbfc;
       --ink:         #16181a;
-      --ink-soft:    #4d5256;
-      --ink-faded:   #8e918c;
-      --rule:        #cdd0c5;
-      --rule-soft:   #dde0d6;
+      --ink-soft:    #4b4f54;
+      --ink-faded:   #7b7e83;
+      --rule:        #cdcfd3;
+      --rule-soft:   #dddfe2;
       --accent:      #d63d1c;        /* grounded coral, authority on light */
       --accent-deep: #a92c10;
       --accent-tint: #f8e4dc;
@@ -194,7 +194,7 @@
       max-width: 560px;
       color: var(--ink-soft);
       font-style: italic;
-      font-weight: 300;
+      font-weight: 400;
     }
     .hero-tag strong {
       font-style: normal;
@@ -393,7 +393,7 @@
     /* ========== RESEARCH ========== */
     .research-grid {
       display: grid;
-      grid-template-columns: repeat(2, 1fr);
+      grid-template-columns: repeat(3, 1fr);
       gap: 32px;
     }
     .thrust {
@@ -454,7 +454,7 @@
       line-height: 1.55;
       color: var(--ink-soft);
     }
-    @media (max-width: 760px) {
+    @media (max-width: 980px) {
       .research-grid { grid-template-columns: 1fr; gap: 16px; }
     }
 
@@ -902,7 +902,7 @@
     .foot-grid p, .foot-grid a, .foot-grid li {
       font-size: 14px;
       line-height: 1.65;
-      color: rgba(241, 243, 236, 0.7);
+      color: rgba(240, 241, 243, 0.7);
     }
     .foot-grid ul { list-style: none; }
     .foot-grid a { transition: color 0.2s; display: block; padding: 2px 0; cursor: pointer; }
@@ -911,7 +911,7 @@
     .foot-bottom {
       margin-top: 44px;
       padding-top: 18px;
-      border-top: 1px solid rgba(241, 243, 236, 0.12);
+      border-top: 1px solid rgba(240, 241, 243, 0.12);
       display: flex;
       justify-content: space-between;
       align-items: center;
@@ -919,7 +919,7 @@
       font-size: 10px;
       letter-spacing: 0.16em;
       text-transform: uppercase;
-      color: rgba(241, 243, 236, 0.45);
+      color: rgba(240, 241, 243, 0.45);
       position: relative;
     }
     @media (max-width: 760px) {
@@ -1167,13 +1167,13 @@
     <div class="wrap">
       <div class="hero-grid">
         <div>
-          <div class="hero-meta reveal d1">PhD · NC State '23 · Now @ HPE</div>
+          <div class="hero-meta reveal d1">PhD · NC State '23 · Storage @ HPE</div>
           <h1 class="hero-name reveal d2">
             Hassan
             <span class="last">Iqbal.</span>
           </h1>
           <p class="hero-tag reveal d3">
-            <strong>Systems software engineer</strong> on the data path at HPE's storage business unit, where I work on object and file system internals, concurrency primitives, and POSIX-compliant storage semantics. My research background spans networked systems, cloud performance measurement, and applied machine learning — with a focus on the quality of experience of streaming applications and the performance of public-cloud infrastructure.
+            <strong>Systems software engineer</strong> at Hewlett Packard Enterprise, building scale-out storage platform — file system internals, NFSv4 locking and POSIX semantics, and S3 object storage. My research background spans networked systems, cloud performance measurement, and applied machine learning, with a focus on the quality of experience of streaming applications and the performance of public-cloud infrastructure.
           </p>
         </div>
 
@@ -1185,7 +1185,7 @@
 
         <div class="hero-links reveal d4">
           <a href="https://github.com/iqbal-h" target="_blank" rel="noopener">GitHub</a>
-          <a href="https://scholar.google.com/citations?hl=en&user=Y1QaCacAAAAJ" target="_blank" rel="noopener">Google Scholar</a>
+          <a href="https://scholar.google.com/citations?user=m-rKCOIAAAAJ&hl=en" target="_blank" rel="noopener">Google Scholar</a>
           <a href="https://www.linkedin.com/in/hiqbal1/" target="_blank" rel="noopener">LinkedIn</a>
           <a href="https://twitter.com/iqbhas" target="_blank" rel="noopener">Twitter / X</a>
           <a href="pdfs/HassanIqbal_Resume.pdf" class="js-resume" data-resume>Resume PDF</a>
@@ -1209,7 +1209,7 @@
             I completed my PhD in 2023 in the Department of Computer Science at <a href="https://www.ncsu.edu/" target="_blank" rel="noopener">North Carolina State University</a>, advised by <a href="https://people.engr.ncsu.edu/mshahza/" target="_blank" rel="noopener">Prof. Muhammad Shahzad</a>. Before NC State, I earned an <strong>MSc in Electrical Engineering (Networks)</strong> from <a href="https://lums.edu.pk/" target="_blank" rel="noopener">LUMS</a> and a <strong>BSc in Telecommunication Engineering</strong> from <a href="http://lhr.nu.edu.pk/" target="_blank" rel="noopener">NUCES, Lahore</a>.
           </p>
           <p>
-            Today I work as a <strong>Systems Software Engineer (L3)</strong> in HPE's storage business unit, on the data&nbsp;path — object and file system internals, concurrency primitives, and POSIX semantics. My academic work has been recognized at venues including ACM&nbsp;WWW, SIGCHI, SIGMETRICS, CoNEXT, SenSys, IEEE/ACM Transactions on Networking, and the IETF — and one paper made its way into a U.S. Senate bill.
+            Today I'm a <strong>Software Engineer (Systems III)</strong> in HPE's storage business unit, where I've helped build a software-defined, scale-out file and object storage platform from before its 1.0 release through five major releases — designing the server-side locking that backs NFSv4 client locks, implementing core POSIX file operations and mode permissions, and delivering S3 object versioning and locking. My academic work has been recognized at venues including ACM&nbsp;WWW, SIGCHI, SIGMETRICS, CoNEXT, SenSys, IEEE/ACM Transactions on Networking, and the IETF — and one paper made its way into a U.S. Senate bill.
           </p>
 
           <div class="edu-strip">
@@ -1234,23 +1234,29 @@
     </div>
   </section>
 
-  <!-- =================== RESEARCH =================== -->
+  <!-- =================== RESEARCH & ENGINEERING =================== -->
   <section id="research" class="section">
     <div class="wrap">
       <div class="sec-head iv">
-        <div class="sec-tag">§ 02 / Research</div>
-        <h2 class="sec-title">Two <em>thrusts.</em></h2>
+        <div class="sec-tag">§ 02 / Research &amp; Engineering</div>
+        <h2 class="sec-title">Three <em>thrusts.</em></h2>
       </div>
 
       <div class="research-grid">
         <div class="thrust iv">
           <div class="thrust-num">01</div>
+          <div class="thrust-tag">Engineering · HPE</div>
+          <h3>Distributed storage internals — file &amp; object.</h3>
+          <p>Server-side NFSv4 locking and IO range locks, POSIX-conformant operations and permissions, S3 versioning and object locking — the concurrency and correctness machinery of a petabyte-scale platform.</p>
+        </div>
+        <div class="thrust iv">
+          <div class="thrust-num">02</div>
           <div class="thrust-tag">Measurement</div>
           <h3>Quality of experience &amp; performance characterization at cloud scale.</h3>
           <p>Empirical analyses of video and game-streaming applications, plus the global network infrastructure of public clouds — measurements that turn vague performance complaints into data you can act on.</p>
         </div>
         <div class="thrust iv">
-          <div class="thrust-num">02</div>
+          <div class="thrust-num">03</div>
           <div class="thrust-tag">Systems</div>
           <h3>Application- and transport-layer mechanisms, augmented by deep learning.</h3>
           <p>Protocol-level interventions — informed by what the measurements actually say — to improve the experience of streaming applications running in the cloud.</p>
@@ -1371,7 +1377,7 @@
             <p class="pub-venue"><a href="https://conferences2.sigcomm.org/co-next/2018/" target="_blank" rel="noopener">ACM CoNEXT 2018</a> <span class="rate">— Acceptance rate 17%</span></p>
             <div class="pub-links">
               <a class="pub-link" href="https://dl.acm.org/doi/10.1145/3281411.3281412" target="_blank" rel="noopener">DOI</a>
-              <a class="pub-link" href="https://github.com/iqbal-h/hiqbal/tree/main/pdfs/scylla.pdf" target="_blank" rel="noopener">PDF</a>
+              <a class="pub-link" href="https://github.com/iqbal-h/hiqbal/blob/main/pdfs/scylla.pdf" target="_blank" rel="noopener">PDF</a>
             </div>
           </div>
         </li>
@@ -1493,7 +1499,7 @@
       <div class="foot-grid">
         <div class="iv">
           <h4>Currently</h4>
-          <p>Software Engineer at Hewlett Packard Enterprise. Open to research collaborations on networked systems, cloud measurement, and applied ML for streaming applications.</p>
+          <p>Software Engineer at Hewlett Packard Enterprise, building distributed file and object storage. Open to research collaborations on networked systems, cloud measurement, and applied ML for streaming applications.</p>
         </div>
         <div class="iv">
           <h4>Profiles</h4>
@@ -1524,7 +1530,7 @@
 
       <div class="foot-bottom">
         <span>© Hassan Iqbal · Built with care</span>
-        <span>Updated · May 2026</span>
+        <span>Updated · June 2026</span>
       </div>
     </div>
   </footer>
